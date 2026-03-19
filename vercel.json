@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "aryan-resume",
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*).pdf",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
+  ]
+}
