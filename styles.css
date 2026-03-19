@@ -6,8 +6,6 @@
     --text-secondary: #a0aec0;
     --primary-color: #3b82f6;
     --primary-hover: #2563eb;
-    --glass-bg: rgba(26, 29, 36, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -21,43 +19,46 @@ body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     line-height: 1.6;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    /* Prvent scroll on body */
 }
 
 .app-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    height: 100vh;
+    width: 100vw;
 }
 
 .header {
-    padding: 2rem 0;
+    background-color: var(--bg-color);
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--border-color);
-    margin-bottom: 2rem;
+    flex-shrink: 0;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .user-info h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.025em;
     background: linear-gradient(135deg, #fff, #a0aec0);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
 }
 
 .btn-download {
@@ -67,41 +68,35 @@ body {
     background-color: var(--primary-color);
     color: white;
     text-decoration: none;
-    padding: 0.6rem 1.25rem;
+    padding: 0.5rem 1rem;
     border-radius: 9999px;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .btn-download:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .pdf-container {
     flex: 1;
     background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    overflow: hidden;
     position: relative;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-    min-height: calc(100vh - 250px);
+    width: 100%;
+    height: 100%;
 }
 
 .pdf-viewer {
     width: 100%;
     height: 100%;
-    min-height: calc(100vh - 250px);
     border: none;
     display: block;
 }
@@ -123,27 +118,26 @@ body {
     font-size: 1.1rem;
 }
 
-.footer {
-    padding: 2rem 0;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    margin-top: 2rem;
-}
-
 @media (max-width: 640px) {
     .header-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.25rem;
+        flex-direction: row;
+        justify-content: space-between;
     }
-    
-    .pdf-container {
-        border-radius: 12px;
-        min-height: 60vh;
+
+    .user-info h1 {
+        font-size: 1.25rem;
     }
-    
-    .pdf-viewer {
-        min-height: 60vh;
+
+    .subtitle {
+        display: none;
+    }
+
+    .btn-download {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .btn-download span {
+        display: none;
+        /* Hide download text on mobile so only icon shows */
     }
 }
